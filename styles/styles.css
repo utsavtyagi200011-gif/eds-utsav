@@ -10,6 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
+ @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Sans+3:wght@400;500&display=swap");
+
 :root {
   /* colors */
   --background-color: white;
@@ -20,8 +22,9 @@
   --link-hover-color: #1d3ecf;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+
+  /* --body-font-family: roboto, roboto-fallback, sans-serif;
+  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif; */
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -38,6 +41,24 @@
 
   /* nav height */
   --nav-height: 64px;
+
+  /* renaissance theme */
+  --heading-font-family: "Cormorant Garamond", serif;
+  --body-font-family: "Source Sans 3", sans-serif;
+  --parchment: #f7f3eb;
+  --paper: #fbf8f3;
+  --ink: #3d342c;
+  --sepia: #6f5b48;
+  --gold: #b08a55;
+  --gold-light: #d8bf8d;
+  --olive: #69715d;
+  --shadow-soft: 0 10px 40px rgb(64 48 31 / 8%);
+  --radius: 6px;
+  --transition: .35s ease;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* fallback fonts */
@@ -73,11 +94,13 @@
 body {
   display: none;
   margin: 0;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background: radial-gradient(circle at top left, rgb(255 255 255 / 45%), transparent 40%), var(--paper);
+  color: var(--ink);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
   line-height: 1.6;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 body.appear {
@@ -107,9 +130,11 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.25;
   scroll-margin: 40px;
+  color: var(--ink);
+  letter-spacing: .02em;
 }
 
 h1 { font-size: var(--heading-font-size-xxl); }
@@ -129,6 +154,11 @@ blockquote {
   margin-bottom: 0.25em;
 }
 
+p {
+  color: var(--sepia);
+  line-height: 1.9;
+}
+
 code,
 pre {
   font-size: var(--body-font-size-s);
@@ -137,7 +167,9 @@ pre {
 pre {
   padding: 16px;
   border-radius: 8px;
-  background-color: var(--light-color);
+  border-left: 4px solid var(--gold);
+  background: #f3eee5;
+  box-shadow: var(--shadow-soft);
   overflow-x: auto;
   white-space: pre;
 }
@@ -155,14 +187,15 @@ button {
 
 /* links */
 a:any-link {
-  color: var(--link-color);
   text-decoration: none;
   overflow-wrap: break-word;
+  color: var(--gold);
+  transition: color var(--transition);
 }
 
 a:hover {
-  color: var(--link-hover-color);
-  text-decoration: underline;
+  color: var(--olive);
+  text-decoration: none;
 }
 
 /* buttons */
@@ -179,7 +212,6 @@ button.button {
   max-width: 100%;
   margin: 0;
   border: 2px solid transparent;
-  border-radius: 2.4em;
   padding: 0.5em 1.2em;
   font: inherit;
   font-weight: 500;
@@ -189,6 +221,10 @@ button.button {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  border-radius: 0;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  transition: all var(--transition);
 }
 
 a.button[aria-disabled="true"],
@@ -199,18 +235,19 @@ button.button:disabled {
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  border-color: var(--gold);
+  background-color: var(--gold);
+  color: white;
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+  border-color: var(--ink);
+  background-color: var(--ink);
+  color: white;
+  transform: translateY(-2px);
 }
 
 a.button.primary[aria-disabled="true"],
@@ -226,18 +263,18 @@ button.button.primary:disabled:focus-visible {
 
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--text-color);
+  border-color: var(--gold);
   background-color: transparent;
-  color: var(--text-color);
+  color: var(--gold);
 }
 
 a.button.secondary:hover,
 a.button.secondary:focus-visible,
 button.button.secondary:hover,
 button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
+  border-color: var(--gold);
+  background-color: var(--gold);
+  color: white;
 }
 
 a.button.secondary[aria-disabled="true"],
@@ -282,6 +319,9 @@ main img {
   max-width: 100%;
   width: auto;
   height: auto;
+  border-radius: var(--radius);
+  filter: contrast(.98) saturate(.92);
+  transition: transform .8s ease, filter .8s ease;
 }
 
 .icon {
@@ -295,9 +335,24 @@ main img {
   width: 100%;
 }
 
+main img:hover {
+  transform: scale(1.02);
+  filter: contrast(1.02) saturate(1);
+}
+
 /* sections */
 main > .section {
-  margin: 40px 0;
+  position: relative;
+  margin: 5rem 0;
+}
+
+main > .section::before {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 1px;
+  margin: 0 auto 3rem;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
 }
 
 main > .section > div {
@@ -322,4 +377,78 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+h1::after,
+h2::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 2px;
+  margin-top: .55rem;
+  background: var(--gold);
+}
+
+/* -------------------------------------------------------
+   Quotes
+------------------------------------------------------- */
+
+blockquote {
+  position: relative;
+  margin: 3rem 0;
+  padding-left: 2rem;
+  border-left: 3px solid var(--gold);
+  color: var(--sepia);
+  font-style: italic;
+}
+
+blockquote::before {
+  content: "❦";
+  position: absolute;
+  left: -.6rem;
+  top: -.3rem;
+  color: var(--gold);
+  font-size: 1.4rem;
+}
+
+/* -------------------------------------------------------
+   Selection
+------------------------------------------------------- */
+
+::selection {
+  background: var(--gold-light);
+  color: var(--ink);
+}
+
+/* -------------------------------------------------------
+   Scrollbar
+------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-light);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* -------------------------------------------------------
+   Decorative Flourish
+------------------------------------------------------- */
+
+.section h1:first-child::before,
+.section h2:first-child::before {
+  content: "❦";
+  display: block;
+  margin-bottom: .6rem;
+  color: var(--gold);
+  font-size: 1rem;
 }
