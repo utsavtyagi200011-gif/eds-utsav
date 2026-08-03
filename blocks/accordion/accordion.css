@@ -1,0 +1,116 @@
+/* ====================================
+   Editorial Accordion
+==================================== */
+
+.accordion {
+  max-width: none;
+  margin: 3rem auto;
+}
+
+.accordion details {
+  position: relative;
+  border: none;
+  border-bottom: 1px solid #d9cfbf;
+  background: transparent;
+}
+
+/* Space between items */
+
+.accordion details + details {
+  margin-top: 0.75rem;
+}
+
+/* Heading */
+
+.accordion details summary {
+  position: relative;
+  padding: 1.6rem 3.5rem 1.6rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #44372d;
+  letter-spacing: 0.02em;
+  transition: color .35s ease,
+              padding-left .35s ease;
+}
+
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Elegant hover */
+
+.accordion details summary:hover {
+  color: #8b6a42;
+  padding-left: 0.4rem;
+}
+
+/* Decorative line */
+
+.accordion details summary::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background: #b58b54;
+  transition: width .35s ease;
+}
+
+.accordion details summary:hover::before,
+.accordion details[open] summary::before {
+  width: 1rem;
+}
+
+/* Minimal plus */
+
+.accordion details summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #a57c4b;
+  transition: transform .35s ease,
+              color .35s ease;
+}
+
+.accordion details[open] summary::after {
+  content: "−";
+  color: #6e5337;
+}
+
+/* Body */
+
+.accordion .accordion-item-body {
+  padding: 0 0 1.8rem;
+  color: #5c534b;
+  line-height: 1.9;
+  font-size: 1rem;
+}
+
+.accordion .accordion-item-body p {
+  margin: 0 0 1rem;
+}
+
+/* Opening animation */
+
+.accordion details[open] .accordion-item-body {
+  animation: fade-in .45s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

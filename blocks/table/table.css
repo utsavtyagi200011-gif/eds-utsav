@@ -1,0 +1,115 @@
+/* ===============================
+   Renaissance Table
+=============================== */
+
+.table {
+  width: 100%;
+  overflow-x: auto;
+  margin: 3rem 0;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fcfaf5;
+  color: #3e352d;
+  border: 1px solid #d8cdb8;
+  font-size: var(--body-font-size-s);
+  line-height: 1.8;
+}
+
+/* Header */
+
+.table table thead {
+  position: relative;
+}
+
+.table table thead th {
+  padding: 1.2rem 1.5rem;
+  background: #f4ecdf;
+  color: #5b4630;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: .82rem;
+  border-bottom: 2px solid #b59363;
+}
+
+/* Decorative rule */
+
+.table table thead th::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 2px;
+  margin-top: .45rem;
+  background: #b59363;
+}
+
+/* Body */
+
+.table table td {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #ebe2d2;
+  transition: background .35s ease;
+}
+
+/* Soft alternating rows */
+
+.table table tbody tr:nth-child(even) {
+  background: #faf7f2;
+}
+
+/* Elegant hover */
+
+.table table tbody tr:hover {
+  background: #f2e8d8;
+}
+
+/* Typography */
+
+.table table th p,
+.table table td p {
+  margin: 0;
+}
+
+.table table td p + p {
+  margin-top: .6rem;
+}
+
+/* Optional first column emphasis */
+
+.table table td:first-child {
+  font-weight: 600;
+  color: #5d4732;
+}
+
+/* Variants */
+
+.table.striped table tbody tr:nth-child(odd) {
+  background: #f8f3ea;
+}
+
+.table.bordered table td,
+.table.bordered table th {
+  border-right: 1px solid #e3d8c7;
+}
+
+.table table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table.bordered table td:last-child,
+.table.bordered table th:last-child {
+  border-right: none;
+}
+
+/* Responsive */
+
+@media (width >= 900px) {
+  .table table {
+    font-size: var(--body-font-size-m);
+  }
+}
