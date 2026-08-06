@@ -1,0 +1,158 @@
+.insights.block {
+  background: #f9f1ee;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.insights-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 32px;
+  align-self: center;
+}
+
+/* Desktop: 3-column grid */
+.insights-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+  width: 100%;
+}
+
+.insights-card-image {
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 16px;
+}
+
+.insights-card-image picture,
+.insights-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.insights-card-title {
+  font-family: "Volvo Novum", "Noto Sans", system-ui, sans-serif;;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.insights-card-desc {
+  font-family: "Volvo Novum", "Noto Sans", system-ui, sans-serif;;
+  font-size: 0.9rem;
+  color: #4a4a4a;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.insights-card-meta {
+  margin-bottom: 12px;
+}
+
+.insights-card-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: #575757;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.insights-card-author-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.insights-card-author-icon picture,
+.insights-card-author-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.insights-author-date{
+  display: flex;
+  flex-direction: column;
+}
+
+.insights-card-date {
+  font-size: 0.8rem;
+  color: #7a7a7a;
+}
+
+.insights-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.insights-tag {
+  font-family: "Volvo Novum", "Noto Sans", system-ui, sans-serif;;
+  font-size: 1rem;
+  color: #212121;
+  background: #ededed;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* CTA button */
+.insights-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+  padding: 12px 24px;
+  border: 1px solid #1a1a1a;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+  text-decoration: none;
+}
+
+.insights-cta::after {
+  content: '›';
+  font-size: 1.1rem;
+}
+
+.insights-cta:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* Mobile: single column stack */
+@media (width <= 767px) {
+  .insights.block {
+    padding: 32px 16px;
+  }
+
+  .insights-cards {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .insights-card-image {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.insights-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
