@@ -1,0 +1,17 @@
+indices:
+  default:
+    include:
+      - /**
+    exclude:
+      - /drafts/**
+      - /private/**
+    properties:
+      title:
+        select: head > title
+        value: textContent
+      description:
+        select: head > meta[name="description"]
+        value: attribute(content)
+      robots:
+        select: head > meta[name="robots"]
+        value: attribute(content)
